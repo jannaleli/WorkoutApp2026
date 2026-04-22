@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:wger.de)",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nAdd Swift model files for workout app\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git push:*)",
+      "Bash(gh repo create:*)",
+      "Bash(gh pr create:*)",
+      "Bash(diskutil list:*)",
+      "Bash(system_profiler:*)",
+      "Bash(log show:*)",
+      "Bash(tree:*)"
+    ]
+  }
+}
