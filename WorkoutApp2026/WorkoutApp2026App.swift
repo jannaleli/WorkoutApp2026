@@ -34,57 +34,60 @@ struct RootView: View {
     @Environment(\.appCoordinator) private var coordinator
 
     var body: some View {
-        ZStack(alignment: .bottom) {
-            // Tab Content
-            TabView(selection: tabSelection) {
-                // Home Tab
-                NavigationStack(path: homePathBinding) {
-                    HomeView()
-                        .navigationDestination(for: Route.self) { route in
-                            destinationView(for: route)
-                        }
-                }
-                .tag(AppTab.home)
-
-                // History Tab
-                NavigationStack(path: historyPathBinding) {
-                    HistoryPlaceholderView()
-                        .navigationDestination(for: Route.self) { route in
-                            destinationView(for: route)
-                        }
-                }
-                .tag(AppTab.history)
-
-                // Build Tab
-                NavigationStack(path: buildPathBinding) {
-                    BuildPlaceholderView()
-                        .navigationDestination(for: Route.self) { route in
-                            destinationView(for: route)
-                        }
-                }
-                .tag(AppTab.build)
-
-                // Profile Tab
-                NavigationStack(path: profilePathBinding) {
-                    ProfilePlaceholderView()
-                        .navigationDestination(for: Route.self) { route in
-                            destinationView(for: route)
-                        }
-                }
-                .tag(AppTab.profile)
+        TabView(selection: tabSelection) {
+            // Home Tab
+            NavigationStack(path: homePathBinding) {
+                HomeView()
+                    .navigationDestination(for: Route.self) { route in
+                        destinationView(for: route)
+                    }
             }
-            .tabViewStyle(.automatic)
-            .toolbar(.hidden, for: .tabBar) // Hide default tab bar
+            .tag(AppTab.home)
 
-            // Custom Tab Bar
+            // History Tab
+            NavigationStack(path: historyPathBinding) {
+                HistoryPlaceholderView()
+                    .navigationDestination(for: Route.self) { route in
+                        destinationView(for: route)
+                    }
+            }
+            .tag(AppTab.history)
+
+            // Build Tab
+            NavigationStack(path: buildPathBinding) {
+                BuildPlaceholderView()
+                    .navigationDestination(for: Route.self) { route in
+                        destinationView(for: route)
+                    }
+            }
+            .tag(AppTab.build)
+
+            // Profile Tab
+            NavigationStack(path: profilePathBinding) {
+                ProfilePlaceholderView()
+                    .navigationDestination(for: Route.self) { route in
+                        destinationView(for: route)
+                    }
+            }
+            .tag(AppTab.profile)
+        }
+        .tabViewStyle(.tabBarOnly)
+        .toolbar(.hidden, for: .tabBar) // Hide default tab bar
+        .safeAreaInset(edge: .bottom, spacing: 0) {
             CustomTabBar(
                 selectedTab: tabSelection,
                 onTabSelected: { tab in
                     coordinator?.switchTab(to: tab)
                 }
             )
+            .frame(maxWidth: .infinity)
+            .background {
+                ColorPalette.tabBarBackground
+                    .ignoresSafeArea(edges: .bottom)
+            }
         }
-        .ignoresSafeArea(.keyboard)
+        .background(ColorPalette.tabBarBackground.ignoresSafeArea(edges: .bottom))
+        .ignoresSafeArea(.keyboard, edges: .bottom)
     }
 
     // MARK: - Bindings

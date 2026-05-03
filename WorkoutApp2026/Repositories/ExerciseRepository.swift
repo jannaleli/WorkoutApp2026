@@ -36,8 +36,9 @@ final class ExerciseRepository: ExerciseRepositoryProtocol, @unchecked Sendable 
     func getCachedExercises(forMuscleGroup group: MuscleGroupType, limit: Int, offset: Int) async throws -> (exercises: [SDExercise], hasMore: Bool)? {
         // Check if cache is valid
         let cacheKey = SDCacheMetadata.key(for: group)
+        let searchKey = cacheKey
         let cacheDescriptor = FetchDescriptor<SDCacheMetadata>(
-            predicate: #Predicate { $0.key == cacheKey }
+            predicate: #Predicate { $0.key == searchKey }
         )
 
         guard let metadata = try modelContext.fetch(cacheDescriptor).first,
@@ -65,8 +66,9 @@ final class ExerciseRepository: ExerciseRepositoryProtocol, @unchecked Sendable 
     }
 
     func getCachedExercise(id: Int) async throws -> SDExercise? {
+        let searchId = id
         let descriptor = FetchDescriptor<SDExercise>(
-            predicate: #Predicate { $0.id == id }
+            predicate: #Predicate { $0.id == searchId }
         )
         return try modelContext.fetch(descriptor).first
     }
@@ -108,8 +110,9 @@ final class ExerciseRepository: ExerciseRepositoryProtocol, @unchecked Sendable 
     func cacheExercises(_ exercises: [SDExercise], forMuscleGroup group: MuscleGroupType) async throws {
         for exercise in exercises {
             // Check if exercise already exists
+            let exerciseId = exercise.id
             let existingDescriptor = FetchDescriptor<SDExercise>(
-                predicate: #Predicate { $0.id == exercise.id }
+                predicate: #Predicate { $0.id == exerciseId }
             )
 
             if let existing = try modelContext.fetch(existingDescriptor).first {
@@ -131,8 +134,9 @@ final class ExerciseRepository: ExerciseRepositoryProtocol, @unchecked Sendable 
 
         // Update cache metadata
         let cacheKey = SDCacheMetadata.key(for: group)
+        let searchCacheKey = cacheKey
         let cacheDescriptor = FetchDescriptor<SDCacheMetadata>(
-            predicate: #Predicate { $0.key == cacheKey }
+            predicate: #Predicate { $0.key == searchCacheKey }
         )
 
         if let existingMetadata = try modelContext.fetch(cacheDescriptor).first {
@@ -146,8 +150,9 @@ final class ExerciseRepository: ExerciseRepositoryProtocol, @unchecked Sendable 
     }
 
     func cacheExercise(_ exercise: SDExercise) async throws {
+        let exerciseId = exercise.id
         let existingDescriptor = FetchDescriptor<SDExercise>(
-            predicate: #Predicate { $0.id == exercise.id }
+            predicate: #Predicate { $0.id == exerciseId }
         )
 
         if try modelContext.fetch(existingDescriptor).first == nil {
@@ -164,8 +169,9 @@ final class ExerciseRepository: ExerciseRepositoryProtocol, @unchecked Sendable 
         // First try to get from cache metadata
         for group in MuscleGroupType.allCases {
             let cacheKey = SDCacheMetadata.key(for: group)
+            let searchKey = cacheKey
             let cacheDescriptor = FetchDescriptor<SDCacheMetadata>(
-                predicate: #Predicate { $0.key == cacheKey }
+                predicate: #Predicate { $0.key == searchKey }
             )
 
             if let metadata = try modelContext.fetch(cacheDescriptor).first {
@@ -204,9 +210,10 @@ final class ExerciseRepository: ExerciseRepositoryProtocol, @unchecked Sendable 
 
         for exerciseInfo in response.results {
             let sdExercise = ExerciseMapper.toSwiftData(from: exerciseInfo)
+            let exerciseId = sdExercise.id
 
             let existingDescriptor = FetchDescriptor<SDExercise>(
-                predicate: #Predicate { $0.id == sdExercise.id }
+                predicate: #Predicate { $0.id == exerciseId }
             )
 
             if let existing = try modelContext.fetch(existingDescriptor).first {

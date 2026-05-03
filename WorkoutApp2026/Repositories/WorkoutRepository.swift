@@ -50,8 +50,9 @@ final class WorkoutRepository: WorkoutRepositoryProtocol, @unchecked Sendable {
     }
 
     func getSession(id: UUID) async throws -> SDWorkoutSession? {
+        let searchId = id
         let descriptor = FetchDescriptor<SDWorkoutSession>(
-            predicate: #Predicate { $0.id == id }
+            predicate: #Predicate { $0.id == searchId }
         )
         return try modelContext.fetch(descriptor).first
     }
@@ -111,8 +112,9 @@ final class WorkoutRepository: WorkoutRepositoryProtocol, @unchecked Sendable {
     }
 
     func getRoutine(id: UUID) async throws -> SDRoutine? {
+        let searchId = id
         let descriptor = FetchDescriptor<SDRoutine>(
-            predicate: #Predicate { $0.id == id }
+            predicate: #Predicate { $0.id == searchId }
         )
         return try modelContext.fetch(descriptor).first
     }

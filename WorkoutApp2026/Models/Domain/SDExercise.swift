@@ -71,13 +71,3 @@ final class SDExercise {
     }
 }
 
-// MARK: - Hashable Conformance
-extension SDExercise: Hashable {
-    static func == (lhs: SDExercise, rhs: SDExercise) -> Bool {
-        lhs.id == rhs.id
-    }
-
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
-    }
-}

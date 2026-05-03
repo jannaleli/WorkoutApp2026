@@ -57,6 +57,6 @@ extension Endpoint {
 }
 
 // MARK: - Wger API Configuration
-enum WgerAPI {
+enum WgerAPIU {
     static let baseURL = "https://wger.de/api/v2"
 }

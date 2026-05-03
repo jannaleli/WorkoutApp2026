@@ -37,8 +37,9 @@ final class MuscleRepository: MuscleRepositoryProtocol, @unchecked Sendable {
     }
 
     func getMuscle(id: Int) async throws -> SDMuscle? {
+        let searchId = id
         let descriptor = FetchDescriptor<SDMuscle>(
-            predicate: #Predicate { $0.id == id }
+            predicate: #Predicate { $0.id == searchId }
         )
         return try modelContext.fetch(descriptor).first
     }
@@ -55,8 +56,9 @@ final class MuscleRepository: MuscleRepositoryProtocol, @unchecked Sendable {
 
     func cacheMuscles(_ muscles: [SDMuscle]) async throws {
         for muscle in muscles {
+            let muscleId = muscle.id
             let existingDescriptor = FetchDescriptor<SDMuscle>(
-                predicate: #Predicate { $0.id == muscle.id }
+                predicate: #Predicate { $0.id == muscleId }
             )
 
             if let existing = try modelContext.fetch(existingDescriptor).first {
@@ -71,8 +73,9 @@ final class MuscleRepository: MuscleRepositoryProtocol, @unchecked Sendable {
         }
 
         // Update cache metadata
+        let musclesKey = SDCacheMetadata.musclesKey
         let cacheDescriptor = FetchDescriptor<SDCacheMetadata>(
-            predicate: #Predicate { $0.key == SDCacheMetadata.musclesKey }
+            predicate: #Predicate { $0.key == musclesKey }
         )
 
         if let existingMetadata = try modelContext.fetch(cacheDescriptor).first {
@@ -89,8 +92,9 @@ final class MuscleRepository: MuscleRepositoryProtocol, @unchecked Sendable {
 
     func syncMuscles() async throws {
         // Check cache validity
+        let musclesKey = SDCacheMetadata.musclesKey
         let cacheDescriptor = FetchDescriptor<SDCacheMetadata>(
-            predicate: #Predicate { $0.key == SDCacheMetadata.musclesKey }
+            predicate: #Predicate { $0.key == musclesKey }
         )
 
         if let metadata = try modelContext.fetch(cacheDescriptor).first, metadata.isValid {

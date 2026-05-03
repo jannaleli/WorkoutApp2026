@@ -17,28 +17,33 @@ struct HomeView: View {
     ]
 
     var body: some View {
-        ScrollView {
-            VStack(spacing: 0) {
-                // Hero Section with Pink Background
-                heroSection
+        VStack(spacing: 0) {
+            // Hero Section with Pink Background
+            heroSection
 
-                // Search Bar (overlapping hero)
-                searchSection
+            // Search Bar (overlapping hero)
+            searchSection
 
-                // Section Label
-                sectionLabel
+            ScrollView {
+                VStack(spacing: 0) {
 
-                // Muscle Group Grid
-                muscleGrid
+
+                    // Section Label
+                    sectionLabel
+
+                    // Muscle Group Grid
+                    muscleGrid
+                }
+            }
+            .background(ColorPalette.backgroundSecondary)
+            .refreshable {
+                await viewModel.refresh()
+            }
+            .task {
+                await viewModel.loadMuscleGroups()
             }
         }
         .background(ColorPalette.backgroundSecondary)
-        .refreshable {
-            await viewModel.refresh()
-        }
-        .task {
-            await viewModel.loadMuscleGroups()
-        }
     }
 
     // MARK: - Hero Section
