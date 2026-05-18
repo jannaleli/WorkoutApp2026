@@ -1,0 +1,51 @@
+{
+  "/Users/jannalelizaplan/Documents/iOSProjects 2025/WorkoutApp2026/WorkoutApp2026/Design/Theme/ColorPalette.swift" : {
+    "const-values" : "/Users/jannalelizaplan/Documents/iOSProjects 2025/WorkoutApp2026/.derivedData/Build/Intermediates.noindex/WorkoutApp2026.build/Debug-iphoneos/WorkoutApp2026.build/Objects-normal/arm64/ColorPalette.swiftconstvalues",
+    "dependencies" : "/Users/jannalelizaplan/Documents/iOSProjects 2025/WorkoutApp2026/.derivedData/Build/Intermediates.noindex/WorkoutApp2026.build/Debug-iphoneos/WorkoutApp2026.build/Objects-normal/arm64/ColorPalette.d",
+    "diagnostics" : "/Users/jannalelizaplan/Documents/iOSProjects 2025/WorkoutApp2026/.derivedData/Build/Intermediates.noindex/WorkoutApp2026.build/Debug-iphoneos/WorkoutApp2026.build/Objects-normal/arm64/ColorPalette.dia",
+    "object" : "/Users/jannalelizaplan/Documents/iOSProjects 2025/WorkoutApp2026/.derivedData/Build/Intermediates.noindex/WorkoutApp2026.build/Debug-iphoneos/WorkoutApp2026.build/Objects-normal/arm64/ColorPalette.o",
+    "swift-dependencies" : "/Users/jannalelizaplan/Documents/iOSProjects 2025/WorkoutApp2026/.derivedData/Build/Intermediates.noindex/WorkoutApp2026.build/Debug-iphoneos/WorkoutApp2026.build/Objects-normal/arm64/ColorPalette.swiftdeps"
+  },
+  "/Users/jannalelizaplan/Documents/iOSProjects 2025/WorkoutApp2026/WorkoutApp2026/Design/Theme/Spacing.swift" : {
+    "const-values" : "/Users/jannalelizaplan/Documents/iOSProjects 2025/WorkoutApp2026/.derivedData/Build/Intermediates.noindex/WorkoutApp2026.build/Debug-iphoneos/WorkoutApp2026.build/Objects-normal/arm64/Spacing.swiftconstvalues",
+    "dependencies" : "/Users/jannalelizaplan/Documents/iOSProjects 2025/WorkoutApp2026/.derivedData/Build/Intermediates.noindex/WorkoutApp2026.build/Debug-iphoneos/WorkoutApp2026.build/Objects-normal/arm64/Spacing.d",
+    "diagnostics" : "/Users/jannalelizaplan/Documents/iOSProjects 2025/WorkoutApp2026/.derivedData/Build/Intermediates.noindex/WorkoutApp2026.build/Debug-iphoneos/WorkoutApp2026.build/Objects-normal/arm64/Spacing.dia",
+    "object" : "/Users/jannalelizaplan/Documents/iOSProjects 2025/WorkoutApp2026/.derivedData/Build/Intermediates.noindex/WorkoutApp2026.build/Debug-iphoneos/WorkoutApp2026.build/Objects-normal/arm64/Spacing.o",
+    "swift-dependencies" : "/Users/jannalelizaplan/Documents/iOSProjects 2025/WorkoutApp2026/.derivedData/Build/Intermediates.noindex/WorkoutApp2026.build/Debug-iphoneos/WorkoutApp2026.build/Objects-normal/arm64/Spacing.swiftdeps"
+  },
+  "/Users/jannalelizaplan/Documents/iOSProjects 2025/WorkoutApp2026/WorkoutApp2026/Design/Theme/Typography.swift" : {
+    "const-values" : "/Users/jannalelizaplan/Documents/iOSProjects 2025/WorkoutApp2026/.derivedData/Build/Intermediates.noindex/WorkoutApp2026.build/Debug-iphoneos/WorkoutApp2026.build/Objects-normal/arm64/Typography.swiftconstvalues",
+    "dependencies" : "/Users/jannalelizaplan/Documents/iOSProjects 2025/WorkoutApp2026/.derivedData/Build/Intermediates.noindex/WorkoutApp2026.build/Debug-iphoneos/WorkoutApp2026.build/Objects-normal/arm64/Typography.d",
+    "diagnostics" : "/Users/jannalelizaplan/Documents/iOSProjects 2025/WorkoutApp2026/.derivedData/Build/Intermediates.noindex/WorkoutApp2026.build/Debug-iphoneos/WorkoutApp2026.build/Objects-normal/arm64/Typography.dia",
+    "object" : "/Users/jannalelizaplan/Documents/iOSProjects 2025/WorkoutApp2026/.derivedData/Build/Intermediates.noindex/WorkoutApp2026.build/Debug-iphoneos/WorkoutApp2026.build/Objects-normal/arm64/Typography.o",
+    "swift-dependencies" : "/Users/jannalelizaplan/Documents/iOSProjects 2025/WorkoutApp2026/.derivedData/Build/Intermediates.noindex/WorkoutApp2026.build/Debug-iphoneos/WorkoutApp2026.build/Objects-normal/arm64/Typography.swiftdeps"
+  },
+  "/Users/jannalelizaplan/Documents/iOSProjects 2025/WorkoutApp2026/WorkoutApp2026/Features/Exercises/ExerciseListView.swift" : {
+    "const-values" : "/Users/jannalelizaplan/Documents/iOSProjects 2025/WorkoutApp2026/.derivedData/Build/Intermediates.noindex/WorkoutApp2026.build/Debug-iphoneos/WorkoutApp2026.build/Objects-normal/arm64/ExerciseListView.swiftconstvalues",
+    "dependencies" : "/Users/jannalelizaplan/Documents/iOSProjects 2025/WorkoutApp2026/.derivedData/Build/Intermediates.noindex/WorkoutApp2026.build/Debug-iphoneos/WorkoutApp2026.build/Objects-normal/arm64/ExerciseListView.d",
+    "diagnostics" : "/Users/jannalelizaplan/Documents/iOSProjects 2025/WorkoutApp2026/.derivedData/Build/Intermediates.noindex/WorkoutApp2026.build/Debug-iphoneos/WorkoutApp2026.build/Objects-normal/arm64/ExerciseListView.dia",
+    "object" : "/Users/jannalelizaplan/Documents/iOSProjects 2025/WorkoutApp2026/.derivedData/Build/Intermediates.noindex/WorkoutApp2026.build/Debug-iphoneos/WorkoutApp2026.build/Objects-normal/arm64/ExerciseListView.o",
+    "swift-dependencies" : "/Users/jannalelizaplan/Documents/iOSProjects 2025/WorkoutApp2026/.derivedData/Build/Intermediates.noindex/WorkoutApp2026.build/Debug-iphoneos/WorkoutApp2026.build/Objects-normal/arm64/ExerciseListView.swiftdeps"
+  },
+  "/Users/jannalelizaplan/Documents/iOSProjects 2025/WorkoutApp2026/WorkoutApp2026/Features/Exercises/ExerciseListViewModel.swift" : {
+    "const-values" : "/Users/jannalelizaplan/Documents/iOSProjects 2025/WorkoutApp2026/.derivedData/Build/Intermediates.noindex/WorkoutApp2026.build/Debug-iphoneos/WorkoutApp2026.build/Objects-normal/arm64/ExerciseListViewModel.swiftconstvalues",
+    "dependencies" : "/Users/jannalelizaplan/Documents/iOSProjects 2025/WorkoutApp2026/.derivedData/Build/Intermediates.noindex/WorkoutApp2026.build/Debug-iphoneos/WorkoutApp2026.build/Objects-normal/arm64/ExerciseListViewModel.d",
+    "diagnostics" : "/Users/jannalelizaplan/Documents/iOSProjects 2025/WorkoutApp2026/.derivedData/Build/Intermediates.noindex/WorkoutApp2026.build/Debug-iphoneos/WorkoutApp2026.build/Objects-normal/arm64/ExerciseListViewModel.dia",
+    "object" : "/Users/jannalelizaplan/Documents/iOSProjects 2025/WorkoutApp2026/.derivedData/Build/Intermediates.noindex/WorkoutApp2026.build/Debug-iphoneos/WorkoutApp2026.build/Objects-normal/arm64/ExerciseListViewModel.o",
+    "swift-dependencies" : "/Users/jannalelizaplan/Documents/iOSProjects 2025/WorkoutApp2026/.derivedData/Build/Intermediates.noindex/WorkoutApp2026.build/Debug-iphoneos/WorkoutApp2026.build/Objects-normal/arm64/ExerciseListViewModel.swiftdeps"
+  },
+  "/Users/jannalelizaplan/Documents/iOSProjects 2025/WorkoutApp2026/WorkoutApp2026/Features/Home/HomeView.swift" : {
+    "const-values" : "/Users/jannalelizaplan/Documents/iOSProjects 2025/WorkoutApp2026/.derivedData/Build/Intermediates.noindex/WorkoutApp2026.build/Debug-iphoneos/WorkoutApp2026.build/Objects-normal/arm64/HomeView.swiftconstvalues",
+    "dependencies" : "/Users/jannalelizaplan/Documents/iOSProjects 2025/WorkoutApp2026/.derivedData/Build/Intermediates.noindex/WorkoutApp2026.build/Debug-iphoneos/WorkoutApp2026.build/Objects-normal/arm64/HomeView.d",
+    "diagnostics" : "/Users/jannalelizaplan/Documents/iOSProjects 2025/WorkoutApp2026/.derivedData/Build/Intermediates.noindex/WorkoutApp2026.build/Debug-iphoneos/WorkoutApp2026.build/Objects-normal/arm64/HomeView.dia",
+    "object" : "/Users/jannalelizaplan/Documents/iOSProjects 2025/WorkoutApp2026/.derivedData/Build/Intermediates.noindex/WorkoutApp2026.build/Debug-iphoneos/WorkoutApp2026.build/Objects-normal/arm64/HomeView.o",
+    "swift-dependencies" : "/Users/jannalelizaplan/Documents/iOSProjects 2025/WorkoutApp2026/.derivedData/Build/Intermediates.noindex/WorkoutApp2026.build/Debug-iphoneos/WorkoutApp2026.build/Objects-normal/arm64/HomeView.swiftdeps"
+  },
+  "/Users/jannalelizaplan/Documents/iOSProjects 2025/WorkoutApp2026/WorkoutApp2026/Features/Home/HomeViewModel.swift" : {
+    "const-values" : "/Users/jannalelizaplan/Documents/iOSProjects 2025/WorkoutApp2026/.derivedData/Build/Intermediates.noindex/WorkoutApp2026.build/Debug-iphoneos/WorkoutApp2026.build/Objects-normal/arm64/HomeViewModel.swiftconstvalues",
+    "dependencies" : "/Users/jannalelizaplan/Documents/iOSProjects 2025/WorkoutApp2026/.derivedData/Build/Intermediates.noindex/WorkoutApp2026.build/Debug-iphoneos/WorkoutApp2026.build/Objects-normal/arm64/HomeViewModel.d",
+    "diagnostics" : "/Users/jannalelizaplan/Documents/iOSProjects 2025/WorkoutApp2026/.derivedData/Build/Intermediates.noindex/WorkoutApp2026.build/Debug-iphoneos/WorkoutApp2026.build/Objects-normal/arm64/HomeViewModel.dia",
+    "object" : "/Users/jannalelizaplan/Documents/iOSProjects 2025/WorkoutApp2026/.derivedData/Build/Intermediates.noindex/WorkoutApp2026.build/Debug-iphoneos/WorkoutApp2026.build/Objects-normal/arm64/HomeViewModel.o",
+    "swift-dependencies" : "/Users/jannalelizaplan/Documents/iOSProjects 2025/WorkoutApp2026/.derivedData/Build/Intermediates.noindex/WorkoutApp2026.build/Debug-iphoneos/WorkoutApp2026.build/Objects-normal/arm64/HomeViewModel.swiftdeps"
+  }
+}

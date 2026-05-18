@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
     @State private var viewModel = HomeViewModel()
     @Environment(\.appCoordinator) private var coordinator
+    @Environment(\.container) private var container
 
     private let columns = [
         GridItem(.flexible(), spacing: Spacing.gridSpacing),
@@ -40,6 +41,7 @@ struct HomeView: View {
                 await viewModel.refresh()
             }
             .task {
+                viewModel.configure(exerciseService: container.exerciseService)
                 await viewModel.loadMuscleGroups()
             }
         }
@@ -96,13 +98,13 @@ struct HomeView: View {
     private var muscleGrid: some View {
         LazyVGrid(columns: columns, spacing: Spacing.gridSpacing) {
             ForEach(viewModel.filteredMuscleGroups) { group in
-                MuscleGroupCard(
-                    muscleGroup: group.type,
-                    exerciseCount: group.exerciseCount,
-                    onTap: {
-                        coordinator?.navigate(to: .exerciseList(muscleGroup: group.type))
-                    }
-                )
+                NavigationLink(value: Route.exerciseList(muscleGroup: group.type)) {
+                    MuscleGroupCard(
+                        muscleGroup: group.type,
+                        exerciseCount: group.exerciseCount
+                    )
+                }
+                .buttonStyle(.plain)
             }
         }
         .padding(.horizontal, Spacing.screenHorizontal)

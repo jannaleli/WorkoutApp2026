@@ -29,7 +29,12 @@ protocol Endpoint {
 // MARK: - Default Implementation
 extension Endpoint {
     var baseURL: String { WgerAPI.baseURL }
-    var headers: [String: String]? { ["Content-Type": "application/json"] }
+    var headers: [String: String]? {
+        [
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+        ]
+    }
     var queryItems: [URLQueryItem]? { nil }
     var body: Data? { nil }
 

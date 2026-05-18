@@ -36,7 +36,8 @@ final class DIContainer {
         configureErrorHandling()
         configureNetworking()
         configureNavigation()
-        // Note: Repositories and Services will be configured after their implementations are created
+        configureRepositories()
+        configureServices()
     }
 
     private func configureModelContainer() {

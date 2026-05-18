@@ -27,7 +27,7 @@ enum NetworkError: Error, LocalizedError {
         case .httpError(let statusCode, _):
             return "HTTP Error: \(statusCode)"
         case .decodingError(let error):
-            return "Failed to decode response: \(error.localizedDescription)"
+            return "Failed to decode response: \(Self.describeDecodingError(error))"
         case .noConnection:
             return "No internet connection"
         case .timeout:
@@ -39,5 +39,25 @@ enum NetworkError: Error, LocalizedError {
         case .rateLimited:
             return "Too many requests. Please wait and try again."
         }
+    }
+
+    private static func describeDecodingError(_ error: Error) -> String {
+        guard let decodingError = error as? DecodingError else {
+            return error.localizedDescription
+        }
+
+        switch decodingError {
+        case .keyNotFound(let key, let context):
+            return "Missing key '\(key.stringValue)' at \(codingPathDescription(context.codingPath))."
+        case .typeMismatch(_, let context), .valueNotFound(_, let context), .dataCorrupted(let context):
+            return context.debugDescription
+        @unknown default:
+            return error.localizedDescription
+        }
+    }
+
+    private static func codingPathDescription(_ codingPath: [CodingKey]) -> String {
+        let path = codingPath.map(\.stringValue).joined(separator: ".")
+        return path.isEmpty ? "root" : path
     }
 }

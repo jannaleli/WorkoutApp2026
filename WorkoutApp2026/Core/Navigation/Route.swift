@@ -20,7 +20,7 @@ enum Route: Hashable {
 
     // Workouts
     case workoutBuilder
-    case activeWorkout(routineId: UUID?)
+    case activeWorkout(sessionId: UUID)
     case routineList
     case routineDetail(routineId: UUID)
 

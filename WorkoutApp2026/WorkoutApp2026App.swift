@@ -34,60 +34,56 @@ struct RootView: View {
     @Environment(\.appCoordinator) private var coordinator
 
     var body: some View {
-        TabView(selection: tabSelection) {
-            // Home Tab
-            NavigationStack(path: homePathBinding) {
-                HomeView()
-                    .navigationDestination(for: Route.self) { route in
-                        destinationView(for: route)
-                    }
-            }
-            .tag(AppTab.home)
-
-            // History Tab
-            NavigationStack(path: historyPathBinding) {
-                HistoryPlaceholderView()
-                    .navigationDestination(for: Route.self) { route in
-                        destinationView(for: route)
-                    }
-            }
-            .tag(AppTab.history)
-
-            // Build Tab
-            NavigationStack(path: buildPathBinding) {
-                BuildPlaceholderView()
-                    .navigationDestination(for: Route.self) { route in
-                        destinationView(for: route)
-                    }
-            }
-            .tag(AppTab.build)
-
-            // Profile Tab
-            NavigationStack(path: profilePathBinding) {
-                ProfilePlaceholderView()
-                    .navigationDestination(for: Route.self) { route in
-                        destinationView(for: route)
-                    }
-            }
-            .tag(AppTab.profile)
-        }
-        .tabViewStyle(.tabBarOnly)
-        .toolbar(.hidden, for: .tabBar) // Hide default tab bar
-        .safeAreaInset(edge: .bottom, spacing: 0) {
-            CustomTabBar(
-                selectedTab: tabSelection,
-                onTabSelected: { tab in
-                    coordinator?.switchTab(to: tab)
-                }
-            )
-            .frame(maxWidth: .infinity)
-            .background {
-                ColorPalette.tabBarBackground
-                    .ignoresSafeArea(edges: .bottom)
+        Group {
+            switch coordinator?.selectedTab ?? .home {
+            case .home:
+                homeStack
+            case .history:
+                historyStack
+            case .build:
+                buildStack
+            case .profile:
+                profileStack
             }
         }
-        .background(ColorPalette.tabBarBackground.ignoresSafeArea(edges: .bottom))
+        .background(ColorPalette.backgroundSecondary.ignoresSafeArea())
         .ignoresSafeArea(.keyboard, edges: .bottom)
+    }
+
+    private var homeStack: some View {
+        NavigationStack(path: homePathBinding) {
+            HomeView()
+                .navigationDestination(for: Route.self) { route in
+                    destinationView(for: route)
+                }
+        }
+    }
+
+    private var historyStack: some View {
+        NavigationStack(path: historyPathBinding) {
+            HistoryPlaceholderView()
+                .navigationDestination(for: Route.self) { route in
+                    destinationView(for: route)
+                }
+        }
+    }
+
+    private var buildStack: some View {
+        NavigationStack(path: buildPathBinding) {
+            BuildPlaceholderView()
+                .navigationDestination(for: Route.self) { route in
+                    destinationView(for: route)
+                }
+        }
+    }
+
+    private var profileStack: some View {
+        NavigationStack(path: profilePathBinding) {
+            ProfilePlaceholderView()
+                .navigationDestination(for: Route.self) { route in
+                    destinationView(for: route)
+                }
+        }
     }
 
     // MARK: - Bindings
@@ -135,15 +131,16 @@ struct RootView: View {
         case .home:
             HomeView()
         case .exerciseList(let muscleGroup):
-            ExerciseListPlaceholderView(muscleGroup: muscleGroup)
+            ExerciseListView(muscleGroup: muscleGroup)
         case .exerciseDetail(let id):
             ExerciseDetailPlaceholderView(exerciseId: id)
         case .exerciseSearch:
             Text("Exercise Search")
         case .workoutBuilder:
             Text("Workout Builder")
-        case .activeWorkout:
-            Text("Active Workout")
+        case .activeWorkout(let sessionId):
+            ActiveWorkoutPlaceholderView(sessionId: sessionId)
+                .toolbar(.hidden, for: .tabBar)
         case .routineList:
             Text("Routines")
         case .routineDetail:
@@ -224,30 +221,6 @@ struct ProfilePlaceholderView: View {
     }
 }
 
-struct ExerciseListPlaceholderView: View {
-    let muscleGroup: MuscleGroupType
-
-    var body: some View {
-        VStack(spacing: Spacing.lg) {
-            Image(systemName: muscleGroup.systemIconName)
-                .font(.system(size: 60))
-                .foregroundColor(muscleGroup.iconColor)
-
-            Text("\(muscleGroup.displayName) Exercises")
-                .font(Typography.headlineLarge)
-                .foregroundColor(ColorPalette.textPrimary)
-
-            Text("Exercise list coming soon")
-                .font(Typography.bodyMedium)
-                .foregroundColor(ColorPalette.textSecondary)
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(muscleGroup.color.opacity(0.3))
-        .navigationTitle(muscleGroup.displayName)
-        .navigationBarTitleDisplayMode(.inline)
-    }
-}
-
 struct ExerciseDetailPlaceholderView: View {
     let exerciseId: Int
 
@@ -264,6 +237,30 @@ struct ExerciseDetailPlaceholderView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(ColorPalette.backgroundSecondary)
         .navigationTitle("Exercise")
+        .navigationBarTitleDisplayMode(.inline)
+    }
+}
+
+struct ActiveWorkoutPlaceholderView: View {
+    let sessionId: UUID
+
+    var body: some View {
+        VStack(spacing: Spacing.lg) {
+            Image(systemName: "figure.strengthtraining.traditional")
+                .font(.system(size: 60))
+                .foregroundColor(ColorPalette.primary)
+
+            Text("Active Workout")
+                .font(Typography.headlineLarge)
+                .foregroundColor(ColorPalette.textPrimary)
+
+            Text("Session \(sessionId.uuidString.prefix(8))")
+                .font(Typography.bodyMedium)
+                .foregroundColor(ColorPalette.textSecondary)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(ColorPalette.backgroundSecondary)
+        .navigationTitle("Workout")
         .navigationBarTitleDisplayMode(.inline)
     }
 }

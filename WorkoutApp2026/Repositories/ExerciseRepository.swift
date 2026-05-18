@@ -79,10 +79,10 @@ final class ExerciseRepository: ExerciseRepositoryProtocol, @unchecked Sendable 
         var allExercises: [SDExercise] = []
 
         for muscleId in muscleIds {
-            let endpoint = WgerEndpoint.exerciseInfoList(language: 2, limit: limit, offset: offset)
+            let endpoint = WgerEndpoint.exerciseInfoByMuscle(muscleId: muscleId, language: 2, limit: limit, offset: offset)
             let response: PaginatedResponse<ExerciseInfo> = try await networkService.request(endpoint)
 
-            // Filter by muscle ID and map to SwiftData models
+            // Keep a client-side guard in case the API returns secondary/related exercises.
             let filtered = response.results.filter { exerciseInfo in
                 exerciseInfo.muscles.contains { $0.id == muscleId }
             }

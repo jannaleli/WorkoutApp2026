@@ -13,59 +13,69 @@ struct MuscleGroupCard: View {
     var onTap: (() -> Void)? = nil
 
     var body: some View {
-        Button(action: { onTap?() }) {
-            VStack(alignment: .leading, spacing: 0) {
-                // Image Area with Body Illustration
-                ZStack {
-                    Rectangle()
-                        .fill(muscleGroup.color)
-
-                    // Body illustration placeholder - using SF Symbol
-                    Image(systemName: muscleGroup.systemIconName)
-                        .font(.system(size: 48))
-                        .foregroundColor(muscleGroup.iconColor)
+        Group {
+            if let onTap {
+                Button(action: onTap) {
+                    cardContent
                 }
-                .frame(height: Spacing.muscleCardImageHeight)
-
-                // Footer with name, count, and tag
-                HStack {
-                    VStack(alignment: .leading, spacing: Spacing.xxs) {
-                        Text(muscleGroup.displayName)
-                            .font(Typography.cardTitle)
-                            .foregroundColor(ColorPalette.textPrimary)
-
-                        Text("\(exerciseCount) exercises")
-                            .font(Typography.cardSubtitle)
-                            .foregroundColor(ColorPalette.textSecondary)
-                    }
-
-                    Spacer()
-
-                    // Tag
-                    Text(muscleGroup.tag)
-                        .font(Typography.cardTag)
-                        .foregroundColor(muscleGroup.tagTextColor)
-                        .padding(.horizontal, Spacing.tagPaddingHorizontal)
-                        .padding(.vertical, Spacing.tagPaddingVertical)
-                        .background(muscleGroup.tagBackgroundColor)
-                        .clipShape(Capsule())
-                        .overlay(
-                            Capsule()
-                                .stroke(muscleGroup.tagTextColor.opacity(0.3), lineWidth: 0.5)
-                        )
-                }
-                .padding(.horizontal, Spacing.cardPadding)
-                .padding(.top, Spacing.muscleCardFooterPadding)
-                .padding(.bottom, Spacing.cardPadding)
+                .buttonStyle(MuscleCardButtonStyle())
+            } else {
+                cardContent
             }
-            .background(ColorPalette.surface)
-            .clipShape(RoundedRectangle(cornerRadius: Spacing.cardCornerRadius))
-            .overlay(
-                RoundedRectangle(cornerRadius: Spacing.cardCornerRadius)
-                    .stroke(ColorPalette.border, lineWidth: 0.5)
-            )
         }
-        .buttonStyle(MuscleCardButtonStyle())
+    }
+
+    private var cardContent: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            // Image Area with Body Illustration
+            ZStack {
+                Rectangle()
+                    .fill(muscleGroup.color)
+
+                // Body illustration placeholder - using SF Symbol
+                Image(systemName: muscleGroup.systemIconName)
+                    .font(.system(size: 48))
+                    .foregroundColor(muscleGroup.iconColor)
+            }
+            .frame(height: Spacing.muscleCardImageHeight)
+
+            // Footer with name, count, and tag
+            HStack {
+                VStack(alignment: .leading, spacing: Spacing.xxs) {
+                    Text(muscleGroup.displayName)
+                        .font(Typography.cardTitle)
+                        .foregroundColor(ColorPalette.textPrimary)
+
+                    Text("\(exerciseCount) exercises")
+                        .font(Typography.cardSubtitle)
+                        .foregroundColor(ColorPalette.textSecondary)
+                }
+
+                Spacer()
+
+                // Tag
+                Text(muscleGroup.tag)
+                    .font(Typography.cardTag)
+                    .foregroundColor(muscleGroup.tagTextColor)
+                    .padding(.horizontal, Spacing.tagPaddingHorizontal)
+                    .padding(.vertical, Spacing.tagPaddingVertical)
+                    .background(muscleGroup.tagBackgroundColor)
+                    .clipShape(Capsule())
+                    .overlay(
+                        Capsule()
+                            .stroke(muscleGroup.tagTextColor.opacity(0.3), lineWidth: 0.5)
+                    )
+            }
+            .padding(.horizontal, Spacing.cardPadding)
+            .padding(.top, Spacing.muscleCardFooterPadding)
+            .padding(.bottom, Spacing.cardPadding)
+        }
+        .background(ColorPalette.surface)
+        .clipShape(RoundedRectangle(cornerRadius: Spacing.cardCornerRadius))
+        .overlay(
+            RoundedRectangle(cornerRadius: Spacing.cardCornerRadius)
+                .stroke(ColorPalette.border, lineWidth: 0.5)
+        )
     }
 }
 

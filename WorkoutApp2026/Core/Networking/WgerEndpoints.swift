@@ -12,6 +12,7 @@ enum WgerEndpoint: Endpoint {
     case exercises(language: Int?, limit: Int?, offset: Int?)
     case exerciseInfo(id: Int)
     case exerciseInfoList(language: Int?, limit: Int?, offset: Int?)
+    case exerciseInfoByMuscle(muscleId: Int, language: Int?, limit: Int?, offset: Int?)
     case exercisesByCategory(categoryId: Int, language: Int?)
     case exercisesByMuscle(muscleId: Int, language: Int?)
     case searchExercises(query: String, language: Int?)
@@ -47,7 +48,7 @@ enum WgerEndpoint: Endpoint {
             return "/exercise/"
         case .exerciseInfo(let id):
             return "/exerciseinfo/\(id)/"
-        case .exerciseInfoList:
+        case .exerciseInfoList, .exerciseInfoByMuscle:
             return "/exerciseinfo/"
         case .exercisesByCategory:
             return "/exercise/"
@@ -92,6 +93,12 @@ enum WgerEndpoint: Endpoint {
         case .exerciseInfoList(let language, let limit, let offset):
             return buildPaginationQuery(language: language, limit: limit, offset: offset)
 
+        case .exerciseInfoByMuscle(let muscleId, let language, let limit, let offset):
+            var items = buildPaginationQuery(language: language, limit: limit, offset: offset) ?? []
+            items.append(URLQueryItem(name: "muscles", value: String(muscleId)))
+            items.append(URLQueryItem(name: "status", value: "2"))
+            return items
+
         case .exercisesByCategory(let categoryId, let language):
             var items = [URLQueryItem(name: "category", value: String(categoryId))]
             if let lang = language {
@@ -129,6 +136,7 @@ enum WgerEndpoint: Endpoint {
         if let off = offset {
             items.append(URLQueryItem(name: "offset", value: String(off)))
         }
+        items.append(URLQueryItem(name: "format", value: "json"))
         return items.isEmpty ? nil : items
     }
 }

@@ -14,7 +14,7 @@ enum MuscleMapper {
         SDMuscle(
             id: muscle.id,
             name: muscle.name,
-            nameEn: muscle.nameEn,
+            nameEn: muscle.nameEn ?? muscle.name,
             isFront: muscle.isFront,
             imageUrlMain: muscle.imageUrlMain,
             imageUrlSecondary: muscle.imageUrlSecondary
@@ -24,7 +24,7 @@ enum MuscleMapper {
     // MARK: - Update existing SDMuscle
     static func update(_ sdMuscle: SDMuscle, from muscle: Muscle) {
         sdMuscle.name = muscle.name
-        sdMuscle.nameEn = muscle.nameEn
+        sdMuscle.nameEn = muscle.nameEn ?? muscle.name
         sdMuscle.isFront = muscle.isFront
         sdMuscle.imageUrlMain = muscle.imageUrlMain
         sdMuscle.imageUrlSecondary = muscle.imageUrlSecondary

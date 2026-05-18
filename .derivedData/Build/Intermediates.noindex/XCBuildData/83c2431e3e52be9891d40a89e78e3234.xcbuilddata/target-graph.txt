@@ -1,0 +1,2 @@
+Target dependency graph (1 target)
+Target 'WorkoutApp2026' in project 'WorkoutApp2026' (no dependencies)
